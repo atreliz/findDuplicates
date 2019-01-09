@@ -1,0 +1,38 @@
+<html ng-app="displayData">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Display Duplication Data</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="app.js"></script>
+
+</head>
+
+	<body ng-controller="mainController">
+		<h1> List of users </h1>
+
+		<h2>Possibly duplicated user</h2>
+			<section ng-repeat="item in data">
+				<ul ng-show="item.length>=2">
+					<li><b>Versions:</b></li>
+					<li ng-repeat="version in item">
+						<span ng-repeat="value in version"> {{value}} , </span> 
+					</li>
+				</ul>
+			</section>
+
+		<h2>No duplicated users</h2>
+			<section ng-repeat="item in data">
+				<ul ng-show="item.length<2">
+					<li ng-repeat="version in item">
+						<span ng-repeat="value in version"> {{value}} , </span> 
+					</li>
+				</ul>
+			</section>
+
+
+	</body>
+</html>
