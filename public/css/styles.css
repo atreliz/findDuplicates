@@ -1,0 +1,118 @@
+*{
+	font-family: 'Roboto', sans-serif;
+}
+
+button{
+    background: #60b1ea;
+    font-size: 16px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #ccc;
+    color: white;
+}
+
+button.active, button:hover{
+    background: #6064ea;
+    cursor: pointer;
+}
+
+
+.redText{
+	color:red;
+}
+
+.error{
+	color:red;
+}
+
+.allUsersView ul li:first-child{
+	    list-style: none;
+
+}
+
+
+table th, table td{
+	text-align: left;
+	padding: 5px 5px;
+	font-size: 12px;
+}
+table thead{
+	text-transform: uppercase;
+}
+
+table tr{
+	cursor: pointer;
+}
+
+table thead tr {
+    background: rgba(0, 137, 255);
+}
+
+table tbody tr:nth-child(odd) {
+    background: rgba(0, 137, 255, 0.25);
+}
+table tbody tr:nth-child(even) {
+    background: : white;
+}
+
+.singleUser{
+	width: 30%;
+    float: left;
+    border: 2px solid #3d3dde;
+    border-radius: 10px;
+    padding: 1%;
+    margin: 2%;
+    box-shadow: 1px 1px 3px #ccc;
+}
+
+
+.singleUser dt, .singleUser dd{
+    width: 70%;
+    float: left;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+}
+
+.singleUser dt{
+	width: 30%;
+}
+
+
+/* Small devices */
+@media only screen and (max-width: 600px) {
+ 	.singleUser{
+		width: 84%;
+	    margin: 6%;
+	    padding: 2%;
+	    float: left;
+	}
+
+	table,table tbody{
+		float: left;
+	    display: block;
+	    width: 100%;
+	}
+
+
+	table thead {
+		display:none;
+	}
+
+	table tr {
+		display: block;
+	}
+
+	table td {
+		display: block;
+		text-align: right;
+		min-height: 12px;
+	}
+
+	table td:before {
+		content: attr(data-label);
+		float: left;
+		text-transform: uppercase;
+	}
+
+}
