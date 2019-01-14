@@ -1,0 +1,9 @@
+<h2>{{title}}</h2>
+<article ng-repeat="item in data">
+	<ul ng-show="item.length>=2">
+		<li><b>Versions:</b></li>
+		<li ng-repeat="version in item">
+			<span ng-repeat="value in version"> {{value}} , </span> 
+		</li>
+	</ul>
+</article>

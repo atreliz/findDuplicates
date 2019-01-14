@@ -1,0 +1,6 @@
+<!-- template to draw a user data -->
+
+<dl ng-repeat="(key,value) in user track by $index" ng-if="value">
+	<dt> <b>{{key}}:</b> </dt>
+  	<dd> {{value}} </dd>
+</dl>

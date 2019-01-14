@@ -1,0 +1,37 @@
+
+<h2>{{title}}</h2>
+<table>
+	<thead>
+		<tr>
+			<th ng-if="mode"> duplications </th>
+			<th > first name</th>
+			<th> last name</th>
+			<th> email</th>
+			<th> phone</th>
+			<th> company</th>
+			<th> address1</th>
+			<th> address2</th>
+			<th> city</th>
+			<th> zip</th>
+			<th> state</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "user in data"
+			ng-click = "loadUser(user)" 
+			ng-if = "( (mode && user.length>=2) || !mode )"
+			>
+			<td ng-if="mode" data-label="duplication" class="redText"> {{user.length}}</td>
+			<td data-label="first name"> {{user[0].first_name}}</td>
+			<td data-label="last name"> {{user[0].last_name}}</td>
+			<td data-label="email"> {{user[0].email}}</td>
+			<td data-label="phone"> {{user[0].phone}}</td>
+			<td data-label="company"> {{user[0].company}}</td>
+			<td data-label="address1"> {{user[0].address1}}</td>
+			<td data-label="address2"> {{user[0].address2}}</td>
+			<td data-label="city"> {{user[0].city}}</td>
+			<td data-label="zip"> {{user[0].zip}}</td>
+			<td data-label="state"> {{user[0].state}}</td>
+		</tr>
+	</tbody>
+</table>
