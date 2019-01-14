@@ -1,0 +1,8 @@
+
+	<article class="singleUser" ng-repeat="user in users track by $index">
+		<h2 ng-if="user.length>=2">User {{$index+1}}</h2>
+		<h2 ng-if="user.length<2" >User</h2>
+
+		<single-user-component user="user" > </single-user-component>
+		
+	</article> 

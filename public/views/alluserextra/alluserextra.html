@@ -1,0 +1,27 @@
+
+
+<div ng-if="!error" class="allUsersView">	
+
+	<!-- duplicated users-->
+	<section class="gruopOfUsers">
+		<table-component 
+			data="data" 
+			mode="true" 
+			title="Possibly duplicated user">
+		</table-component>
+	</section>
+
+	<!-- single users-->
+	<section class="gruopOfUsers">
+		<table-component 
+			data="data" 
+			mode="false" 
+			title="No duplicated users">
+		</table-component>
+
+	</section>
+</div>
+
+<div ng-if="error" class="error">
+	<p>{{errorDescription}}</p>
+</div>
