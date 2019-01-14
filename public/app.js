@@ -1,24 +1,49 @@
-var displayData = angular.module('displayData', []);
+
+/* App Definition */
+var displayDataApp = angular.module('displayDataApp', ['ngRoute', 'displayDataControllers', 'displayDataAppDirectives']);
 
 
-displayData.controller('mainController', function mainController($scope, $http) {
-
-    // this will store the data to display on the view
-    $scope.data = {};
-
-    $scope.init = function(){
-
-		//getting data from API
-	    $http.get('/api/users')
-	        .success(function(data) {
-	            $scope.data = data;
-	        })
-	        .error(function(data) {
-	            console.log('Error' );
-	        });
-    }
+/* App Controllers */
+var displayDataControllers = angular.module('displayDataControllers', []);
 
 
-	//init the flow
-    $scope.init();
-});
+/* App Routing */
+displayDataApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.
+            when('/', {
+                templateUrl: 'views/alluser/alluser.html',
+                controller: 'alluserController'
+            }).
+            when('/extra', {
+                templateUrl: 'views/alluserextra/alluserextra.html',
+                controller: 'alluserextraController'
+            }).
+            when('/singleuser', {
+                templateUrl: 'views/singleuser/singleuser.html',
+                controller: 'singleuserController'
+            }).otherwise({
+                redirectTo: '/'
+            });
+    }]);
+
+/* Main page controller*/
+displayDataControllers.controller('mainController',['$scope','$location','$rootScope',
+ function( $scope, $location, $rootScope) {
+
+
+ 	$scope.nagivateTo = (destination) => {
+ 		$location.path("/"+destination);
+ 	}
+
+ 	$scope.activeButton = () => {
+ 		$scope.currentUrl = $location.path();
+ 	}
+
+	//detec changes on url to set active button
+ 	$rootScope.$on("$routeChangeSuccess", function(event, current, previous, rejection){
+ 		$scope.activeButton();
+ 	})
+
+
+}]);

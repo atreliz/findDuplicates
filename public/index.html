@@ -1,4 +1,4 @@
-<html ng-app="displayData">
+<html ng-app="displayDataApp">
 <head>
     <!-- META -->
     <meta charset="utf-8">
@@ -6,33 +6,39 @@
 
     <title>Display Duplication Data</title>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <script src="app.js"></script>
+    <!-- General CSS and font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" >
+
+	<!-- Libs -->
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.min.js"></script>
+    
+    <!-- all scripts-->
+    <script src="main.js"></script>  
 
 </head>
 
-	<body ng-controller="mainController">
+	<body>
 		<h1> List of users </h1>
 
-		<h2>Possibly duplicated user</h2>
-			<section ng-repeat="item in data">
-				<ul ng-show="item.length>=2">
-					<li><b>Versions:</b></li>
-					<li ng-repeat="version in item">
-						<span ng-repeat="value in version"> {{value}} , </span> 
-					</li>
-				</ul>
-			</section>
+		<!-- Navigation menu -->
+		<nav ng-controller="mainController">
+			<button ng-click="nagivateTo('list')" ng-class="{'active' : (currentUrl=='/' || currentUrl=='/list')  }">
+				Simple list view
+			</button>
+			<button ng-click="nagivateTo('extra')" ng-class="{'active' : currentUrl=='/extra' }">
+				Extra view
+			</button>
+			<button class="active" ng-click="nagivateTo('extra')" 
+					ng-if="currentUrl=='/singleuser' "> 
+				Back
+			</button>
 
-		<h2>No duplicated users</h2>
-			<section ng-repeat="item in data">
-				<ul ng-show="item.length<2">
-					<li ng-repeat="version in item">
-						<span ng-repeat="value in version"> {{value}} , </span> 
-					</li>
-				</ul>
-			</section>
+		</nav>
 
+		<!-- APP content will load here -->
+        <div  id="view" ng-view></div>
 
 	</body>
 </html>
